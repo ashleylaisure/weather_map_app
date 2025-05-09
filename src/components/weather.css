@@ -1,0 +1,156 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to right, #f3b07c, #fcd283);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.weather img {
+    /* display: none; */
+    margin-top: -9rem;
+}
+
+.weather-app {
+    width: 35rem;
+    height: 65rem;
+    padding: 2rem;
+    
+    background-image: linear-gradient(to top, #f3b07c, #fcd283);
+    box-shadow: -3rem 1rem 6rem rgba(0, 0, 0, .3);
+    border-radius: 3rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+}
+
+/* ==== SEARCH ====*/
+.search {
+    display:flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* search top */
+.search-top {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-top i {
+    font-size: 2rem;
+    color: #2f2e57
+}
+
+.search-top div {
+    font-size: 1.6rem;
+    color: #484569;
+    letter-spacing: .1rem;
+}
+
+/* search bar */
+.search-bar {
+    position: relative;
+}
+.search-bar input {
+    width: 25rem;
+    height: 3.5rem;
+    background-color: transparent;
+    border: .2rem solid #676394;
+    border-radius: 3rem;
+    outline: none;
+    padding: 1rem 1rem;
+    font-size: 1.6rem;
+    color: #484569;
+}
+
+.search-bar input::placeholder {
+    font-size: 1.4rem;
+    color: #676394;
+    letter-spacing: .1rem;
+}
+
+.search-bar i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1.5rem;
+    color: #2f2e57;
+    cursor: pointer;
+}
+/* ==== WEATHER ==== */
+
+.weather-type {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: #484569
+}
+
+.temp {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9rem;
+    background-image: linear-gradient(to right, #2f2e57, #605d80);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: .5rem .5rem 1rem rgba(0, 0, 0, 0.2)
+}
+
+/* ==== WEATHER DATE ==== */
+.weather-date {
+    position: absolute;
+    bottom: 22%;
+    font-size: 1.6rem;
+    color: #484569;
+}
+
+/* ==== WEATHER DATA ==== */
+
+.weather-data {
+    width: 100%;
+    position: absolute;
+    bottom: 2rem;
+    display: flex;
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+.weather-data > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: rgba(255, 255, 255, .2);
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.data-name {
+    font-size: 1.6rem;
+    color: #605d80;
+}
+
+.weather-data i {
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: -.3rem .3rem .5rem rgba(0, 0, 0, 0.2);
+}
+
+.data {
+    font-size: 2rem;
+    color: #2f2e57;
+}

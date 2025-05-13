@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import * as weatherService from '../services/weatherService';
 
 import sunny from '../assets/images/sunny.png'
 import cloudy from '../assets/images/cloudy.png'
@@ -12,16 +13,11 @@ const Weather = () => {
     const [location, setLocation] = useState('')
     const [loading, setLoading] = useState(false)
 
-    const api_key = "247662426988f015cc27f4f779500a05"
-
     useEffect(() => {
         const fetchDefaultWeather = async () => {
             setLoading(true)
             const defaultLocation = "New York"
-            const url = `https://api.openweathermap.org/data/2.5/weather?q=${defaultLocation}&units=imperial&appid=${api_key}`
-
-            const res = await fetch(url)
-            const defaultdata = await res.json()
+            const defaultdata = await weatherService.show(`${defaultLocation}`)
 
             setData(defaultdata)
             setLoading(false)
@@ -33,31 +29,23 @@ const Weather = () => {
         setLocation(e.target.value)
     }
 
-    const search = async () => {
+    const handleSearch = async () => {
+        setLoading(true)
         if(location.trim() !== '') {
-            const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${api_key}`
+            const data = await weatherService.show(`${location}`)
 
-            const res = await fetch(url)
-            const searchData = await res.json()
-
-            if(searchData.code !== 200) {
-                setData({notFound: true})
-            } else {
-                setData(searchData)
-                setLocation('')
-            }
+            console.log('Data', data)
+            setData(data)
+            setLocation('')
 
             setLoading(false)
-            console.log(searchData)
-
-            
-        }
+        } 
         
     }
 
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
-            search()
+            handleSearch()
         }
     }
 
@@ -127,7 +115,8 @@ const Weather = () => {
                             onChange={handleInputChange}
                             onKeyDown={handleKeyDown}/>
                         <i className="fa-solid fa-magnifying-glass"
-                            onClick={search}></i>
+                            onClick={handleSearch}>
+                        </i>
                     </div>
                 </div>
                 {loading ? (
@@ -143,7 +132,13 @@ const Weather = () => {
                     <div className="weather">
                         <img src={weatherImage} alt="sunny" />
                         <div className="weather-type">{data.weather ? data.weather[0].main : null}</div>
-                        <div className="temp">{data.main ? `${Math.floor(data.main.temp)}°F` : null}</div>
+                        <div className="high-temp">
+                            <div className="temp">{data.main ? `${Math.floor(data.main.temp_max)}°F` : null}</div>
+                        </div>
+                        <div className="low-temp">
+                            <div className="temp">{data.main ? `${Math.floor(data.main.temp_min)}°F` : null}</div>
+                        </div>
+                        
                     </div>
                     <div className="weather-date">
                         <p>{formattedDate}</p>

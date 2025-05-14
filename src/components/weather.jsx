@@ -135,7 +135,10 @@ const Weather = () => {
                 ) : (
                 <>
                     <div className="weather">
-                        <img src={weatherImage} alt="sunny" />
+                        <div class="image-container">
+                            <img src={weatherImage} alt="sunny" />
+                        </div>
+                        
                         <div className="weather-type">{data.weather ? data.weather[0].main : null}</div>
                         
                         <div className="weather-temp">

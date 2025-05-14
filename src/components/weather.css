@@ -98,9 +98,26 @@
 }
 /* ==== WEATHER ==== */
 
-.weather img {
+.image-container {
+    width: 500px;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+}
+
+.image-container img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
     margin-top: -7.5rem;
-    animation: zoomIn 1s ease-out forwards
+    animation: up-down 3s ease-in-out alternate infinite;
+}
+
+@keyframes up-down {
+    to {
+        transform: translateY(10px);
+    }
 }
 
 .weather-type {

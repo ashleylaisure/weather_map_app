@@ -7,7 +7,6 @@ import rainy from '../assets/images/rainy.png'
 import snowy from '../assets/images/snowy.png'
 import loadingGif from '../assets/images/loading.gif'
 
-
 const Weather = () => {
     const [data, setData] = useState([])
     const [location, setLocation] = useState('')

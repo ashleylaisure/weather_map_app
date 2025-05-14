@@ -1,4 +1,5 @@
-const API_KEY = import.meta.env.VITE_API_KEY;
+// const API_KEY = import.meta.env.VITE_API_KEY;
+const API_KEY = '&units=imperial&appid=247662426988f015cc27f4f779500a05'
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather?'
 
 const show = async (city) => {

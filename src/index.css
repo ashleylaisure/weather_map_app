@@ -10,3 +10,25 @@
 html {
     font-size: 62.5%
 }
+
+:root {
+    --black-200: #2f2e57;
+    --black-300:#484569;
+    --balck-400: #605d80;
+    --black-500: #676394;
+    --black-600: #827cb3;
+
+    --shadow: rgba(0, 0, 0, .3);
+
+    --orange-200: #f3b07c;
+    --orange-400:#fcd283;
+
+    --teal-200:#45bebc;
+    --teal-400: #71eeec;
+
+    --blue-200: #5bc8fb;
+    --blue-400: #80eaff;
+
+    --white-200: #aff2ff;
+    --white-400: #ffffff;
+}

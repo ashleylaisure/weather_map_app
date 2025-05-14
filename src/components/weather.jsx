@@ -35,12 +35,18 @@ const Weather = () => {
             const data = await weatherService.show(`${location}`)
 
             console.log('Data', data)
-            setData(data)
-            setLocation('')
+
+            if (data.cod !== 200) {
+                setData({notFound: true})
+            } else {
+                setData(data)
+                setLocation('')
+            }
 
             setLoading(false)
         } 
         
+
     }
 
     const handleKeyDown = (e) => {
@@ -70,19 +76,18 @@ const Weather = () => {
     const weatherImage = data.weather ? weatherImages[data.weather[0].main] : null
 
     const backgroundImages = {
-        Clear: "linear-gradient(to right, #f3b07c, #fcd283)",
-        Clouds: "linear-gradient(to right, #57d6d4, #71eeec)",
-        Rain: "linear-gradient(to right, #5bc8fb, #80eaff)",
-        Thunderstorm: "linear-gradient(to right, #5bc8fb, #80eaff)",
-        Drizzle: "linear-gradient(to right, #5bc8fb, #80eaff)",
-        Snow: "linear-gradient(to right, #aff2ff, #ffffff)",
-        Haze: "linear-gradient(to right, #57d6d4, #71eeec)",
-        Mist: "linear-gradient(to right, #57d6d4, #71eeec)",
-        Fog: "linear-gradient(to right, #57d6d4, #71eeec)",
+        Clear: "linear-gradient(to right, var(--orange-200), var(--orange-400))",
+        Clouds: "linear-gradient(to right, var(--teal-200), var(--teal-400))",
+        Rain: "linear-gradient(to right, var(--blue-200),var(--blue-400))",
+        Thunderstorm: "linear-gradient(to right,var(--blue-200),var(--blue-400))",
+        Drizzle: "linear-gradient(to right,var(--blue-200),var(--blue-400))",
+        Snow: "linear-gradient(to right, var(--white-200), var(--white-400))",
+        Haze: "linear-gradient(to right,var(--teal-200), var(--teal-400))",
+        Mist: "linear-gradient(to right,var(--teal-200), var(--teal-400))",
+        Fog: "linear-gradient(to right,var(--teal-200), var(--teal-400))",
     }
 
-    const backgroundImage = data.weather ? backgroundImages[data.weather[0].main] : "linear-gradient(to right, #f3b07c, #fcd283)"
-
+    const backgroundImage = data.weather ? backgroundImages[data.weather[0].main] : backgroundImages["Clear"]
     const currentDate = new Date()
 
     const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
@@ -132,11 +137,17 @@ const Weather = () => {
                     <div className="weather">
                         <img src={weatherImage} alt="sunny" />
                         <div className="weather-type">{data.weather ? data.weather[0].main : null}</div>
-                        <div className="high-temp">
-                            <div className="temp">{data.main ? `${Math.floor(data.main.temp_max)}°F` : null}</div>
-                        </div>
-                        <div className="low-temp">
-                            <div className="temp">{data.main ? `${Math.floor(data.main.temp_min)}°F` : null}</div>
+                        
+                        <div className="weather-temp">
+                            <div className="high-temp">
+                                <div className="data-temp">High</div>
+                                <div className="temp">{data.main ? `${Math.floor(data.main.temp_max)}°F` : null}</div>
+                            </div>
+
+                            <div className="low-temp">
+                                <div className="data-temp">Low</div>
+                                <div className="temp">{data.main ? `${Math.floor(data.main.temp_min)}°F` : null}</div>
+                            </div>
                         </div>
                         
                     </div>
@@ -149,6 +160,7 @@ const Weather = () => {
                             <i className="fa-solid fa-droplet"></i>
                             <div className="data">{data.main ? data.main.humidity : null}%</div>
                         </div>
+
                         <div className="wind">
                             <div className="data-name">Wind</div>
                             <i className="fa-solid fa-wind"></i>

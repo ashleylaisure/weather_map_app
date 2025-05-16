@@ -99,18 +99,15 @@
 /* ==== WEATHER ==== */
 
 .image-container {
-    width: 500px;
-    height: 400px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
     overflow: hidden;
-    position: relative;
 }
 
 .image-container img {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    position: absolute;
-    margin-top: -7.5rem;
+    margin-top: -13rem;
     animation: up-down 3s ease-in-out alternate infinite;
 }
 
@@ -129,34 +126,38 @@
     color: var(--black-300);
 }
 
-.weather-temp {
+.temp {
     position: absolute;
-    top: 58%;
+    top: 55%;
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
-    gap: 3rem;
-}
 
-.high-temp, .low-temp{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.data-temp {
-    font-size: 1.6rem;
-    color: var(--black-300);
-}
-
-.temp {
     font-size: 6rem;
     background-image: linear-gradient(to top, var(--black-200), var(--black-600));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: .5rem .5rem 1rem var(--shadow);
 }
+.weather-temp {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 2rem;
+
+    font-size: 1.6rem;
+    color: var(--black-300);
+}
+
+.high-temp, .low-temp{
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+
 
 /* ==== WEATHER DATE ==== */
 .weather-date {

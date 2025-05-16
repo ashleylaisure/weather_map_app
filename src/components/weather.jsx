@@ -30,9 +30,9 @@ const Weather = () => {
 
     const handleSearch = async () => {
         setLoading(true)
+        // check that the string is not empty or just whitespace " ".trim() becomes an empty string
         if(location.trim() !== '') {
             const data = await weatherService.show(`${location}`)
-
             console.log('Data', data)
 
             if (data.cod !== 200) {
@@ -42,9 +42,8 @@ const Weather = () => {
                 setLocation('')
             }
 
-            setLoading(false)
         } 
-        
+        setLoading(false)
 
     }
 
@@ -97,7 +96,7 @@ const Weather = () => {
     const month = months[currentDate.getMonth()]
     const day = currentDate.getDate()
 
-    const formattedDate = `${weekDay}, ${day} ${month}`
+    const formattedDate = `${weekDay}, ${month} ${day} `
 
     return (
         <div className="container" style={{backgroundImage}}>
@@ -114,7 +113,7 @@ const Weather = () => {
                     <div className="search-bar">
                         <input 
                             type="text" 
-                            placeholder="Enter Location"
+                            placeholder="Enter City or Zip"
                             value={location}
                             onChange={handleInputChange}
                             onKeyDown={handleKeyDown}/>
@@ -140,15 +139,17 @@ const Weather = () => {
                         
                         <div className="weather-type">{data.weather ? data.weather[0].main : null}</div>
                         
+                        <div className="temp">{data.main ? `${Math.floor(data.main.temp)}°F` : null}</div>
+
                         <div className="weather-temp">
                             <div className="high-temp">
-                                <div className="data-temp">High</div>
-                                <div className="temp">{data.main ? `${Math.floor(data.main.temp_max)}°F` : null}</div>
+                                <div className="data-temp">High:</div>
+                                <div className="small-temp">{data.main ? `${Math.floor(data.main.temp_max)}°` : null}</div>
                             </div>
 
                             <div className="low-temp">
-                                <div className="data-temp">Low</div>
-                                <div className="temp">{data.main ? `${Math.floor(data.main.temp_min)}°F` : null}</div>
+                                <div className="data-temp">Low:</div>
+                                <div className="small-temp">{data.main ? `${Math.floor(data.main.temp_min)}°` : null}</div>
                             </div>
                         </div>
                         

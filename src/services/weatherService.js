@@ -1,4 +1,4 @@
-const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/weather`;
+const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/weather/`;
 
 const show = async (city) => {
     try{
